@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>POPO make fun</title>
+  <meta charset="utf-8">
+  <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <script src="js/fabric.min.js"></script>
+  <script src="js/jquery-1.12.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76698557-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <style type="text/css">
+    .btn {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">POPO voz</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://vozforums.com/showthread.php?t=4891173">VOZ thread</a></li>
+            <li><a href="http://www.iconarchive.com/show/popo-emotions-icons-by-rokey/nosebleed-icon.html">Icon archive</a></li>
+            <li><a href="#">Github</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div>
+  <div class="container">
+
+    <div class=row>
+      <div class="col-lg-2">
+        <div class="well">
+          <canvas id="canvas" width="128" height="128" class="center-block"></canvas>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="clear_all()">Clear all</button>
+        <button type="button" class="btn btn-primary" onclick="clear_selector()">Clear selector</button>
+        <button type="button" class="btn btn-primary" onclick="save_Img()">Save</button>
+      </div>
+      <div class="col-lg-10">
+        <div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#eyes" aria-controls="eyes" role="tab" data-toggle="tab">Eyes</a></li>
+            <li role="presentation"><a href="#mouth" aria-controls="mouth" role="tab" data-toggle="tab">Mouth</a></li>
+            <li role="presentation"><a href="#others" aria-controls="others" role="tab" data-toggle="tab">Others</a></li>
+            <li role="presentation"><a href="#bricks" aria-controls="bricks" role="tab" data-toggle="tab">Bricks</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="eyes">
+              <div id="imgCanvasEyes">
+                <img class="icon" src="icon-elements/eyes-1.png" id="eyes-1">
+                <img class="icon" src="icon-elements/eyes-2.png" id="eyes-2">
+                <img class="icon" src="icon-elements/eyes-3.png" id="eyes-3">
+                <img class="icon" src="icon-elements/eyes-4.png" id="eyes-4">
+                <img class="icon" src="icon-elements/eyes-5.png" id="eyes-5">
+                <img class="icon" src="icon-elements/eyes-6.png" id="eyes-6">
+                <img class="icon" src="icon-elements/eyes-7.png" id="eyes-7">
+                <img class="icon" src="icon-elements/eyes-8.png" id="eyes-8">
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="mouth">
+              <div id="imgCanvasMount">
+                <img class="icon" src="icon-elements/mount-1.png" id="mount-1">
+                <img class="icon" src="icon-elements/mount-2.png" id="mount-2">
+                <img class="icon" src="icon-elements/mount-3.png" id="mount-3">
+                <img class="icon" src="icon-elements/mount-4.png" id="mount-4">
+                <img class="icon" src="icon-elements/mount-5.png" id="mount-5">
+                <img class="icon" src="icon-elements/mount-6.png" id="mount-6">
+                <img class="icon" src="icon-elements/mount-7.png" id="mount-7">
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="others">
+              <div id="imgCanvasOthers">
+                <img class="icon" src="icon-elements/others-1.png" id="others-1">
+                <img class="icon" src="icon-elements/others-2.png" id="others-2">
+                <img class="icon" src="icon-elements/others-3.png" id="others-3">
+                <img class="icon" src="icon-elements/others-4.png" id="others-4">
+                <img class="icon" src="icon-elements/others-5.png" id="others-5">
+                <img class="icon" src="icon-elements/others-6.png" id="others-6">
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="bricks">
+              <div id="imgCanvasBricks">
+                <img class="icon" src="icon-elements/bricks-1.png" id="bricks-1">
+                <img class="icon" src="icon-elements/bricks-2.png" id="bricks-2">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- col-lg-10 -->
+    </div>
+  </div>
+</body>
+<script>
+  var canvas = new fabric.Canvas('canvas');
+  var imgCanvas = {
+      "imgCanvasEyes": null,
+      "imgCanvasFace": null,
+      "imgCanvasBrick": null,
+      "imgCanvasHair": null,
+      "imgCanvasMount": null,
+      "imgCanvasNose": null,
+      "imgCanvasOthers": null
+  }
+  canvas.setBackgroundImage('icon-elements/face-default.png', canvas.renderAll.bind(canvas), {backgroundImageStretch: false});
+  $(".icon" ).click(function() {
+    change_element(this.parentNode.id, this.id);
+  });
+
+  function change_element(element, target){
+    canvas.remove(imgCanvas[element]);
+    imgCanvas[element] = new fabric.Image(document.getElementById(target), {left: 0, top: 0});
+    canvas.add(imgCanvas[element]);
+  }
+
+  function clear_selector(){
+    canvas.deactivateAll().renderAll();
+  }
+
+  function clear_all(){
+    canvas.clear();
+  }
+
+  function save_Img(){
+    canvas.deactivateAll().renderAll();
+    if (!fabric.Canvas.supports('toDataURL')) {
+      alert('This browser doesn\'t provide means to serialize canvas to an image');
+    }
+    else {
+      window.open(canvas.toDataURL('png'));
+    }
+  }
+</script>
+</html>
